@@ -1,0 +1,12 @@
+Item page
+<br>
+<br>
+<%= @grocery_item["name"] %>
+
+<ul>
+<% @comments.each do |comment| %>
+  <li>
+    <%= comment["body"] %>
+  </li>
+<% end %>
+</ul>
