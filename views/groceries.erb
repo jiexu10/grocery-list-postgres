@@ -3,17 +3,42 @@
 <ul id="grocery-list">
   <% @groceries.each do |item| %>
     <li class="item">
+      <div style="float:left;">
       <a href="/groceries/<%= item["id"] %>"><%= item["name"] %></a>
+      </div>
+      <div style="float:left;">
+      <form method="post" action="/groceries/<%= item["id"] %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete"/>
+      </form>
+      </div>
+      <div style="float:left;">
+      <a href="/groceries/<%= item["id"] %>/edit">Update</a>
+      </div>
+      <div style="clear: left;"/>
     </li>
   <% end %>
 </ul>
 
+<% if @edit_mode %>
 <fieldset>
   <legend>Add Item</legend>
-  <form method="post" action="/groceries">
+  <form method="post" action="/groceries/<%= @grocery_item["id"] %>">
+    <input type="hidden" name="_method" value="PATCH">
     <label for="name">Name</label>
-    <input type="text" name="name" id="name" required/>
+    <input type="text" name="name" id="name" value="<%= @grocery_item["name"] %>"required/>
 
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Update" />
   </form>
 </fieldset>
+<% else %>
+  <fieldset>
+    <legend>Add Item</legend>
+    <form method="post" action="/groceries">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" required/>
+
+      <input type="submit" value="Submit" />
+    </form>
+  </fieldset>
+<% end %>

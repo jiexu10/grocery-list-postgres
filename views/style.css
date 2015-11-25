@@ -1,0 +1,9 @@
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+.item {
+  display:inline;
+}
+
+.grocery-list {font-weight:bold;}

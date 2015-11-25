@@ -5,3 +5,11 @@ body {
 .row {
   margin: 20px 5%;
 }
+
+.item {
+  display:inline;
+}
+
+.grocery-list {
+
+}
